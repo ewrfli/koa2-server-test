@@ -52,6 +52,7 @@ app.use(async (ctx, next) => {
   await next()
   const ms = new Date() - start
   console.log('logger-ms:',`${ctx.method} ${ctx.url} - ${ms}ms`)
+  console.log('logger-end:',new Date())
   // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
