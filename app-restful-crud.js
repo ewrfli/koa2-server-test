@@ -51,6 +51,11 @@ router.post('/add', async(ctx) => { //localhost:3001/user/add json{username:}
 router.get('/find/:id', async(ctx) => { //localhost:3001/user/find/1
     let id = ctx.params.id
     console.log(id)
+
+    if (Number(id) > (userList.length - 1)) {
+        ctx.throw(412, '先决条件失败') //错误处理
+    }
+
     ctx.body = {
         code: 200,
         msg: '查询成功',
