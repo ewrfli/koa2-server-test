@@ -36,6 +36,18 @@ router.delete('/del', async(ctx) => { //get//localhost:3001/user/del?id=1
 })
 
 router.post('/add', async(ctx) => { //localhost:3001/user/add json{username:}
+
+    ctx.verifyParams({ //请求参数校验
+        username: {
+            type: 'string',
+            required: true
+        },
+        pwd: {
+            type: 'string',
+            required: true
+        }
+    })
+
     let { username, pwd } = ctx.request.body
     userList.push({
         username,
